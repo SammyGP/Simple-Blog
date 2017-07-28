@@ -20,3 +20,26 @@ var blogSchema = new mongoose.Schema({
 var Blog = mongoose.model("Blog", blogSchema);
 
 // Routes
+
+app.get("/", function(req, res){
+	res.redirect("/blogs");
+});
+
+// INDEX
+app.get("/blogs", function(req, res){
+	Blog.find({}, function(err, allBlogs){
+		if(err) {
+			console.log(err);
+		} else if (allBlogs.length === 0) {
+			console.log("No blogs yet");
+			res.render("index", {blogs: allBlogs});
+		} else {
+			res.render("index", {blogs: allBlogs});
+		}
+	});
+});
+
+
+app.listen(3000, function(){
+	console.log("server is running");
+});
