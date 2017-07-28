@@ -1,0 +1,14 @@
+<% include partials/header %>
+<h1>Test Landing Page!</h1>
+
+<a href="blogs/new">New Blogpost</a>
+
+
+<% blogs.forEach(function(blog){ %>
+	<h2><%= blog.title %></h2>
+	<img src="<%= blog.image %>">
+	<p><%= blog.body %></p>
+	<button><%= blog.category %></button>
+<% }) %>
+
+<% include partials/footer %>
